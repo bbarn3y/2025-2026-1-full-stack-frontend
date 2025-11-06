@@ -7,6 +7,9 @@ import {CharacterCardComponent} from './character-card/character-card.component'
 import {RouterModule, Routes} from '@angular/router';
 import {PageRoutes} from '../_constants/page-routes';
 import { NzAlertModule } from 'ng-zorro-antd/alert';
+import {NzCardModule} from 'ng-zorro-antd/card';
+import {NzIconModule} from 'ng-zorro-antd/icon';
+import {NzInputModule} from 'ng-zorro-antd/input';
 
 const routes: Routes = [
   {
@@ -29,6 +32,9 @@ const routes: Routes = [
     CommonModule,
     NzAlertModule,
     NzButtonModule,
+    NzCardModule,
+    NzIconModule,
+    NzInputModule,
     RouterModule.forChild(routes)
   ]
 })

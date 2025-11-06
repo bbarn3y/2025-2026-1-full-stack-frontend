@@ -34,7 +34,7 @@ export class LoginComponent {
   }
 
   submitForm() {
-    this.clientService.loginHttp()
+    this.clientService.loginMock()
       .subscribe((response) => {
         console.log(response);
         this.userService.storeSession(response.token);
