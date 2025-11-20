@@ -12,17 +12,18 @@ import {debounceTime, fromEvent, map} from 'rxjs';
 export class CharacterListingComponent implements OnInit, AfterViewInit {
   @ViewChild('searchInput', { static: true }) searchInput!: ElementRef<HTMLInputElement>;
 
-  characters: Character[] = [
-    new Character('Mage Máté', '/images/characters/mage.webp', CharacterClass.MAGE, 5),
-    new Character('Warrior Vazul', '/images/characters/warrior.webp', CharacterClass.WARRIOR, 9)
-  ];
-  filteredCharacters: Character[] = [...this.characters];
+  // characters: Character[] = [
+  //   new Character('Mage Máté', '/images/characters/mage.webp', CharacterClass.MAGE, 5),
+  //   new Character('Warrior Vazul', '/images/characters/warrior.webp', CharacterClass.WARRIOR, 9)
+  // ];
+  characters: Character[] = [];
+  filteredCharacters: Character[] = [];
 
-  constructor(private characterService: CharacterService) {
-  }
+  constructor(private characterService: CharacterService) {}
 
   ngOnInit() {
-    // this.characters = this.characterService.getCharacters();
+    this.characters = this.characterService.getCharacters();
+    this.filteredCharacters = [...this.characters];
   }
 
   ngAfterViewInit() {
@@ -35,6 +36,11 @@ export class CharacterListingComponent implements OnInit, AfterViewInit {
         console.log(filter);
         this.filterCharacterList(filter ?? '');
       })
+
+    this.characterService.characterListChanged.subscribe((characters: Character[]) => {
+      this.characters = characters;
+      this.filterCharacterList(this.searchInput.nativeElement.value);
+    })
   }
 
   characterClickHandler(characterName: string) {

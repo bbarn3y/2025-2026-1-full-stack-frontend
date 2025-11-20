@@ -8,12 +8,17 @@
 </nz-card>
 
 <ng-template #actionEditTemplate>
-  <span nz-icon nzType="edit"></span>
+  <span nz-icon nzType="edit" (click)="editCharacter(character)"></span>
 </ng-template>
 
 <ng-template #actionRemoveTemplate>
   <span nz-icon nzType="delete"
-        (click)="characterService.removeCharacter(character.id)"></span>
+        nz-popconfirm
+        nzPopconfirmTitle="Are you sure that you wish to delete this character?"
+        nzPopconfirmPlacement="bottom"
+        nzOkText="Yes"
+        nzCancelText="No"
+        (nzOnConfirm)="characterService.removeCharacter(character.id)"></span>
 </ng-template>
 
 <ng-template #titleTemplate>

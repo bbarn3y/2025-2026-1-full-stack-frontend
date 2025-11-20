@@ -10,6 +10,13 @@ import { NzAlertModule } from 'ng-zorro-antd/alert';
 import {NzCardModule} from 'ng-zorro-antd/card';
 import {NzIconModule} from 'ng-zorro-antd/icon';
 import {NzInputModule} from 'ng-zorro-antd/input';
+import {NzModalModule} from 'ng-zorro-antd/modal';
+import {NzFormModule} from 'ng-zorro-antd/form';
+import {CharacterCreatorComponent} from './character-creator/character-creator.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {NzSelectModule} from 'ng-zorro-antd/select';
+import {NzInputNumberModule} from 'ng-zorro-antd/input-number';
+import {NzPopconfirmModule} from 'ng-zorro-antd/popconfirm';
 
 const routes: Routes = [
   {
@@ -25,6 +32,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     CharacterCardComponent,
+    CharacterCreatorComponent,
     CharacterListingComponent,
     LobbyComponent
   ],
@@ -33,8 +41,14 @@ const routes: Routes = [
     NzAlertModule,
     NzButtonModule,
     NzCardModule,
+    NzFormModule,
     NzIconModule,
     NzInputModule,
+    NzInputNumberModule,
+    NzModalModule,
+    NzPopconfirmModule,
+    NzSelectModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes)
   ]
 })
