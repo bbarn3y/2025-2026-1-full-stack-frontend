@@ -1,11 +1,16 @@
 <nz-card style="width: 250px"
-         [nzActions]="[actionEditTemplate, actionRemoveTemplate]"
+         [style.background-color]="config.backgroundColor"
+         [nzActions]="[actionSelectTemplate, actionEditTemplate, actionRemoveTemplate]"
          [nzCover]="coverTemplate">
   <nz-card-meta
     [nzTitle]="titleTemplate"
     [nzDescription]="'Max HP: ' + character.maxHp"
   ></nz-card-meta>
 </nz-card>
+
+<ng-template #actionSelectTemplate>
+  <span nz-icon nzType="select" (click)="characterSelected.emit()"></span>
+</ng-template>
 
 <ng-template #actionEditTemplate>
   <span nz-icon nzType="edit" (click)="editCharacter(character)"></span>
@@ -23,7 +28,7 @@
 
 <ng-template #titleTemplate>
   <div (click)="characterClicked.emit(character.name)">
-    {{ character.name }}
+    {{ character.name | formatName: ";" }}
   </div>
 </ng-template>
 

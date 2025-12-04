@@ -17,6 +17,10 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {NzSelectModule} from 'ng-zorro-antd/select';
 import {NzInputNumberModule} from 'ng-zorro-antd/input-number';
 import {NzPopconfirmModule} from 'ng-zorro-antd/popconfirm';
+import {SelectedCharDirective} from '../_directives/selected-char.directive';
+import {FormatNamePipe} from '../_pipes/format-name.pipe';
+import {TranslatePipe} from '@ngx-translate/core';
+import {NzDropDownModule} from 'ng-zorro-antd/dropdown';
 
 const routes: Routes = [
   {
@@ -34,13 +38,16 @@ const routes: Routes = [
     CharacterCardComponent,
     CharacterCreatorComponent,
     CharacterListingComponent,
-    LobbyComponent
+    FormatNamePipe,
+    LobbyComponent,
+    SelectedCharDirective
   ],
   imports: [
     CommonModule,
     NzAlertModule,
     NzButtonModule,
     NzCardModule,
+    NzDropDownModule,
     NzFormModule,
     NzIconModule,
     NzInputModule,
@@ -49,7 +56,8 @@ const routes: Routes = [
     NzPopconfirmModule,
     NzSelectModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    TranslatePipe
   ]
 })
 export class CharacterModule { }

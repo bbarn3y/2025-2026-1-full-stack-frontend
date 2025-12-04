@@ -13,5 +13,10 @@
  <app-character-card *ngFor="let character of characters"></app-character-card>
  -->
 @for (c of filteredCharacters; track c.name) {
-  <app-character-card [character]="c" (characterClicked)="characterClickHandler($event)"></app-character-card>
+  <app-character-card appSelectedChar
+                      [character]="c"
+                      [color]="CharacterDetails[c.characterClass].color"
+                      [selected]="selectedCharacter?.id === c.id"
+                      (characterClicked)="characterClickHandler($event)"
+                      (characterSelected)="selectedCharacter = c"></app-character-card>
 }

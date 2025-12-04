@@ -1,5 +1,18 @@
-<button nz-button (click)="openCharacterCreator()">Create a character</button>
+<button nz-button (click)="openCharacterCreator()">
+  {{ 'CHARACTER.CREATE' | translate }}
+</button>
 
 <app-character-listing></app-character-listing>
+
+<a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu">
+  Change language
+  <nz-icon nzType="down" />
+</a>
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <ul nz-menu>
+    <li nz-menu-item (click)="translate.use('en')">English</li>
+    <li nz-menu-item (click)="translate.use('hu')">Hungarian</li>
+  </ul>
+</nz-dropdown-menu>
 
 <button nz-button (click)="logout()">Logout</button>

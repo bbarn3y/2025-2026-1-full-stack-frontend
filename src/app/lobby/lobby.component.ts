@@ -3,6 +3,7 @@ import {RoutingService} from '../_service/routing.service';
 import {UserService} from '../_service/user.service';
 import {NzModalService} from 'ng-zorro-antd/modal';
 import {CharacterCreatorComponent} from './character-creator/character-creator.component';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-lobby',
@@ -14,7 +15,10 @@ export class LobbyComponent {
 
   constructor(private nzModal: NzModalService,
               private routingService: RoutingService,
+              public translate: TranslateService,
               private userService: UserService) {
+    translate.onLangChange.subscribe((langChange) => {
+    })
   }
 
   logout() {
@@ -24,7 +28,7 @@ export class LobbyComponent {
 
   openCharacterCreator(): void {
     this.nzModal.create({
-      nzTitle: 'Create a character',
+      nzTitle: this.translate.instant('CHARACTER.CREATE'),
       nzContent: CharacterCreatorComponent,
       nzFooter: null
     });

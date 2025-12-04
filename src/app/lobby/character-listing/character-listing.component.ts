@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Character, CharacterClass} from '../../_models/character';
+import {Character, CharacterClass, CharacterDetails} from '../../_models/character';
 import {CharacterService} from '../../_service/character.service';
 import {debounceTime, fromEvent, map} from 'rxjs';
 
@@ -18,6 +18,9 @@ export class CharacterListingComponent implements OnInit, AfterViewInit {
   // ];
   characters: Character[] = [];
   filteredCharacters: Character[] = [];
+  selectedCharacter?: Character;
+
+  CharacterDetails = CharacterDetails;
 
   constructor(private characterService: CharacterService) {}
 
